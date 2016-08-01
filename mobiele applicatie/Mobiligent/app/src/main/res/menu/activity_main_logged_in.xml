@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_map"
+            android:icon="@drawable/ic_traffic"
+            android:title="@string/app_all_events" />
+    </group>
+
+    <item android:title="Mijn account">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_my_events"
+                    android:icon="@drawable/ic_traffic"
+                    android:title="@string/app_my_events" />
+                <item
+                    android:id="@+id/nav_my_locations"
+                    android:icon="@drawable/ic_locations"
+                    android:title="@string/app_my_locations" />
+                <item
+                    android:id="@+id/nav_my_routes"
+                    android:icon="@drawable/ic_routes"
+                    android:title="@string/app_my_routes" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Instellingen">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_user_settings"
+                    android:icon="@drawable/ic_edit_settings"
+                    android:title="@string/app_user_data" />
+                <item
+                    android:id="@+id/nav_logout"
+                    android:icon="@drawable/ic_logout"
+                    android:title="@string/app_logout" />
+            </group>
+        </menu>
+    </item>
+</menu>

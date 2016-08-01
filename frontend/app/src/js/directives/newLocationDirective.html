@@ -1,0 +1,62 @@
+<div class="modal-header">
+  <button type="button" class="close" ng-click="close()">
+    <span aria-hidden="true">&times;</span>
+    <span class="sr-only">Sluiten</span>
+  </button>
+  <h3 class="modal-title">Locatie toevoegen</h3>
+</div>
+
+<div class="modal-body">
+  <form novalidate class="form-horizontal" name="registration" ng-submit="submitted = true">
+    <div>
+      <!-- Give the location a name. -->
+
+      <div class="row row-grid">
+        <div class="col-md-6" ng-class="{ 'has-error' : registration.name.$invalid && registration.$submitted }">
+          <label class="required"> Naam van deze locatie: </label>
+          <input name="name" type="text" class="form-control" ng-model="locationInfo.name" required>
+          <p ng-show="registration.$submitted && (registration.name.$error.required)" class="help-block">
+            Gelieve een naam in te geven voor de locatie.
+          </p>
+        </div>
+        <!-- Get notifications via email -->
+        <div class="col-md-6">
+          <br/>
+          <label> Meldingen ontvangen via e-mail:
+            <input type="checkbox" ng-model="locationInfo.active">
+          </label>
+        </div>
+      </div>
+
+      <!-- add location -->
+      <div class="row row-grid">
+        <div class="col-md-6" ng-class="{ 'has-error' : ( registration.location.$invalid || !isAddressValid(locationInfo.location) ) && registration.$submitted }">
+          <label class="required"> Adres: </label>
+          <input name="location" class="form-control" type="text" g-places-autocomplete force-selection="true" ng-model="locationInfo.location" autocomplete="off" required placeholder="{{currentAddress}}">
+          <p ng-show="registration.$submitted && (registration.location.$error.required)" class="help-block">
+            Gelieve een adres in te geven.
+          </p>
+        </div>
+
+        <div class="col-md-6">
+          <label class="required" > Straal omgevingsgebied: </label>
+          <div class="input-group">
+            <input name="radius" type="number" class="form-control" ng-model="locationInfo.radius" required>
+            <span class="input-group-addon"> m </span>
+          </div>
+        </div>
+      </div>
+
+      <div id="map-canvas4"></div>
+
+      <!-- include all the possible error messages for the registration -->
+      <errormessages></errormessages>
+    </div>
+  </form>
+</div>
+
+<div class="modal-footer">
+  <button type="submit" class="btn btn-success" ng-click="registration.$setSubmitted(); registration.$valid && register()">
+    Pas toe
+  </button>
+</div>

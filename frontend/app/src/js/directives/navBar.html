@@ -1,0 +1,67 @@
+<header class="navbar navbar-inverse navbar-fixed-top" role="banner">
+	<div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#/index">MobiliGent</a>
+		</div>
+
+		<!-- List the nav links for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<!-- Navbar elements only for the user index page -->
+
+				<p ng-show="currentPage.includes('userIndex.html') && !reminder" class="navbar-text" id="nav-label">
+					<b ng-if="currentUser.first_name !== ''">Hoi {{currentUser.first_name}}!</b>
+          <b ng-if="currentUser.first_name === ''">Hoi!</b>
+				</p>
+
+				<li>
+					<a href="#/userIndex" ng-show="currentPage.includes('adminIndex.html') || currentPage.includes('dataDump.html')">
+						Ga terug
+					</a>
+				</li>
+
+				<li>
+					<a href="" ng-click="openNewEvent()" ng-show="refreshToken.role === 'operator' || refreshToken.role === 'administrator'">
+						<span class="glyphicon glyphicon-plus"></span> Voeg event toe
+					</a>
+				</li>
+
+				<li ng-show="refreshToken.role === 'administrator'" class="dropdown">
+					<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Beheer <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#/adminIndex"><span class="glyphicon glyphicon-list"></span> Profielen beheren</a></li>
+						<li class="divider"></li>
+						<li><a href="#/dataDump"><span class="glyphicon glyphicon-list"></span> Datadump weergeven</a></li>
+					</ul>
+				</li>
+
+				<li ng-show="currentPage.includes('userIndex.html')" class="dropdown">
+					<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Opties <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="" ng-click="openEditUser()"><span class="glyphicon glyphicon-pencil"></span> Inloggegevens bewerken</a></li>
+
+						<li role="separator" class="divider"></li>
+						<!-- We don't allow an admin to delete his own account. There always needs to be at least one admin.
+					 		An admin can delete other admin accounts -->
+						<li><a href="" ng-show="refreshToken.role !== 'administrator'" ng-click="confirmClick() && deleteUser()" confirm-click="Bent u zeker dat u uw account wilt verwijderen?"><span class="glyphicon glyphicon-remove"></span> Verwijder account</a></li>
+						<li><a href="" ng-click="logout()"><span class="glyphicon glyphicon-user"></span> Afmelden</a></li>
+					</ul>
+				</li>
+
+				<li>
+					<a href="https://mobiliteit.stad.gent/mobiliteitsbedrijf/contact">Contact</a>
+				</li>
+
+			</ul>
+		</li>
+	</ul>
+</div>
+</div>
+</header>

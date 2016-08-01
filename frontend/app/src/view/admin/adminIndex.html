@@ -1,0 +1,17 @@
+<div ng-include src=" 'js/directives/navBar.html' "></div>
+
+<div class="container">
+    <ul class="nav nav-pills nav-justified">
+       <li class="active"><a href="" ng-click="template = templates[0]">Alle gebruikers</a></li>
+       <li><a href="" ng-click="template = templates[1]">Alle beheerders</a></li>
+    </ul>
+    <div ng-include src="template.url"></div>
+</div>
+
+<!-- script to change the active class when clicking on a different pill -->
+<script>
+    $(".nav li").on("click", function() {
+      $(".nav li").removeClass("active");
+      $(this).addClass("active");
+    });
+</script>

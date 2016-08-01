@@ -1,0 +1,46 @@
+<div class="col-md-6">
+  <h3>Admins</h3>
+  <uib-accordion close-others=false>
+    <uib-accordion-group is-open=true heading="{{user.email}}" ng-repeat="user in admins" ng-click="findAndChangeUserId(user.id)">
+      <p><b>Voornaam:</b> {{user.first_name}}</p>
+      <p><b>Familienaam:</b> {{user.last_name}}</p>
+      <p ng-if="user.validated.email"><b>E-mail gevalideerd?:</b> Ja</p>
+      <p ng-if="!user.validated.email"><b>E-mail gevalideerd?:</b> Nee</p>
+      <p><b>Rol:</b> Admin</p>
+      <!-- Do not let the current admin remove his/her own admin rights, there has always to be at least one admin -->
+      <div class="text-center" ng-show="currentUser.email !== user.email">
+        <button type="button" class="btn btn-success col-md-5" ng-click="makeOperator(user.email)" confirm-click="Bent u zeker dat u deze admin operator wil maken?">
+          <span class="glyphicon glyphicon-plus" ></span>
+          Voeg toe als operator
+        </button>
+        <button type="button" class="btn btn-danger col-md-5" ng-click="confirmClick() && deleteAdmin(user.email)" confirm-click="Bent u zeker dat u deze admin wil verwijderen?">
+          <span class="glyphicon glyphicon-trash" ></span>
+          Verwijder als admin
+        </button>
+      </div>
+    </uib-accordion-group>
+  </uib-accordion>
+</div>
+
+<div class="col-md-6">
+  <h3>Operatoren</h3>
+  <uib-accordion close-others=false>
+    <uib-accordion-group is-open=true heading="{{user.email}}" ng-repeat="user in operators" ng-click="findAndChangeUserId(user.id)">
+      <p><b>Voornaam:</b> {{user.first_name}}</p>
+      <p><b>Familienaam:</b> {{user.last_name}}</p>
+      <p ng-if="user.validated.email"><b>E-mail gevalideerd?:</b> Ja</p>
+      <p ng-if="!user.validated.email"><b>E-mail gevalideerd?:</b> Nee</p>
+      <p><b>Rol:</b> Operator</p>
+      <div class="text-center">
+        <button type="button" class="btn btn-success col-md-5" ng-click="makeAdmin(user.email)" confirm-click="Bent u zeker dat u deze operator admin wil maken?">
+          <span class="glyphicon glyphicon-plus" ></span>
+          Voeg toe als admin
+        </button>
+        <button type="button" class="btn btn-danger col-md-5" ng-click="confirmClick() && deleteOperator(user.email)" confirm-click="Bent u zeker dat u deze operator wil verwijderen?">
+          <span class="glyphicon glyphicon-trash" ></span>
+          Verwijder als operator
+        </button>
+      </div>
+    </uib-accordion-group>
+  </uib-accordion>
+</div>

@@ -1,0 +1,42 @@
+<div ng-show="currentUserLocations.length !== 0">
+    <button class="btn" id="fixedButtonTop" ng-click="openNewLocation()">
+        <span class="glyphicon glyphicon-plus"></span>
+        Voeg nieuwe locatie toe
+    </button>
+
+    <uib-accordion close-others=true>
+        <uib-accordion-group heading="{{l.name}}" is-open="locationId == $index" ng-repeat="l in currentUserLocations" ng-click="findAndChangeLocationId(l.id)">
+            Adres:
+            {{ parseAddress(currentUserLocations[$index].address) }}
+            <br/>
+            Radius:
+            {{currentUserLocations[$index].radius}}
+            m
+            <br/>
+            <br/>
+
+            <button type="button" class="btn btn-warning col-xs-12 col-sm-4" style="min-width:150px" ng-click="openEditLocation(l)">
+                <span class="glyphicon glyphicon-pencil"></span>
+                Pas Locatie aan
+            </button>
+            <button type="button" class="btn btn-danger pull-right col-xs-12 col-sm-4" style="min-width:150px" ng-click="confirmClick() && deleteLocation(l.id)" confirm-click="Bent u zeker dat u deze locatie wilt verwijderen?">
+                <span class="glyphicon glyphicon-trash"></span>
+                Verwijder locatie
+            </button>
+        </uib-accordion-group>
+
+    </uib-accordion>
+
+</div>
+</div>
+
+<div ng-show="currentUserLocations.length === 0">
+<h1></h1>
+<p class="well">
+    U heeft momenteel nog geen locatie geregistreerd. Klik op de knop 'Voeg nieuwe locatie toe' om een nieuwe locatie toe te voegen en meldingen te ontvangen.
+</p>
+<button class="btn" id="fixedButtonBottom" ng-click="openNewLocation()">
+    <span class="glyphicon glyphicon-plus"></span>
+    Voeg nieuwe locatie toe
+</button>
+</div>

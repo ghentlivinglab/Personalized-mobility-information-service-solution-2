@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                       http://www.springframework.org/schema/beans/spring-beans.xsd
+                       http://www.springframework.org/schema/mvc
+                       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <bean id="taskExecutor"
+          class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <property name="corePoolSize" value="5" />
+        <property name="maxPoolSize" value="10" />
+        <property name="WaitForTasksToCompleteOnShutdown" value="true" />
+    </bean>
+    
+    <bean id="dataAccessProvider" class="database_v2.controlLayer.impl.DataAccessProviderImpl" />
+  
+    <bean id="databaseCache" class="database_v2.controlLayer.impl.DatabaseCacheImpl">
+    </bean>
+    
+    <bean id="rasterizer" class="database_v2.utils.Rasterizer">
+        <constructor-arg ref="dataAccessProvider" />
+        <constructor-arg ref="taskExecutor"/>
+    </bean>
+    
+    <bean id="internalDatabase" class="database_v2.utils.InternalDatabase">
+        <constructor-arg ref="dataAccessProvider" />
+        <constructor-arg ref="databaseCache" />
+    </bean>
+    
+    <bean id="emailNotifications" class="notifications.senders.EmailNotificationSender">
+        <constructor-arg ref="taskExecutor" />
+    </bean>
+    
+    <bean id="mobilePushNotifications" class="notifications.senders.MobilePushNotificationSender">
+        
+    </bean>
+    
+    <bean id="notificationDispatcher" class="notifications.NotificationDispatcher">
+        <constructor-arg >
+            <list>
+                <ref bean="emailNotifications"/>
+                <ref bean="mobilePushNotifications"/>    
+            </list>
+        </constructor-arg>
+    </bean>
+    
+    <bean id="dataCoupler" class="datacoupler.DataCoupler">
+        <constructor-arg ref="internalDatabase"/>
+        <constructor-arg ref="taskExecutor" />
+        <constructor-arg ref="rasterizer" />
+        <constructor-arg ref="notificationDispatcher" />
+    </bean> 
+  
+    <bean id="database" class="database_v2.controlLayer.impl.DatabaseImpl">
+        <constructor-arg ref="dataAccessProvider" />
+        <constructor-arg ref="databaseCache" />
+        <constructor-arg ref="rasterizer" />
+        <constructor-arg ref="dataCoupler" />
+    </bean>
+    
+    <bean id="wazeDataSource" class="datasources.waze.WazeDataSource">
+        <constructor-arg ref="database" /> 
+    </bean>
+    
+    <bean id="dataFetcher" class="datasources.DataFetcher">
+        <constructor-arg ref="database" />
+        <constructor-arg ref="wazeDataSource" />
+    </bean>
+    
+    <bean id="eventController" class="controllers.EventController">
+        <constructor-arg ref="database"/>
+    </bean>
+  
+    <bean id="userController" class="controllers.UserController">
+        <constructor-arg ref="database"/>
+        <constructor-arg ref="taskExecutor" />
+    </bean>
+  
+    <bean id="eventTypeController" class="controllers.EventTypeController">
+        <constructor-arg ref="database"/>
+    </bean>
+  
+    <bean id="locationController" class="controllers.LocationController">
+        <constructor-arg ref="database"/>
+    </bean>
+  
+    <bean id="routeController" class="controllers.RouteController">
+        <constructor-arg ref="database"/>
+    </bean>
+  
+    <bean id="travelController" class="controllers.TravelController">
+        <constructor-arg ref="database"/>
+    </bean>
+    
+    <bean id="tokenController" class="controllers.TokenController">
+        <constructor-arg ref="database"/>
+    </bean>
+    
+    <bean id="adminController" class="controllers.AdminController">
+        <constructor-arg ref="database"/>
+    </bean>
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/user/*" />
+            <mvc:exclude-mapping path="/user/forgot_password"/>
+            <mvc:exclude-mapping path="/user/*/push_token"/>
+            <bean id="userAuthenticationInterceptor" class="controllers.UserAuthenticationInterceptor">
+                <constructor-arg ref="database"/>
+            </bean>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/event"/>
+            <mvc:mapping path="/event/*"/>
+            <bean id="eventAuthenticationInterceptor" class="controllers.EventAuthenticationInterceptor">
+                <constructor-arg ref="database"/>
+            </bean>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/admin/*" />
+            <mvc:mapping path="/admin/user/*" />
+            <bean id="adminAuthenticationInterceptor" class="controllers.AdminAuthenticationInterceptor">
+                <constructor-arg ref="database"/>
+            </bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+</beans>
+
+

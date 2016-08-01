@@ -1,0 +1,73 @@
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+#absolute-center {
+  position: relative;
+  top: 50%;
+	transform: translateY(50%);
+}
+
+.navbar-inverse .navbar-brand {
+    color: white;
+}
+/*
+@media (max-width: 767px)
+.navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
+  color: white;
+}*/
+
+#myDropdown {
+  height: 50px;
+  width: 300px;
+}
+
+.container-table {
+  display: table;
+}
+
+#wrapper {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 30%
+}
+
+.text-vertical-center {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#myButton {
+	font-size: 20px;
+  color:#FFF;
+  background-color:#404040;
+  width: 300px;
+  height: 50px;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+#mapcontainer{
+  height: calc(100% - 0);
+  width:100%;
+  position: absolute;
+  right: 0px;
+  top: 50px;
+  bottom: 0;
+  overflow: hidden;
+}
+
+#login-map {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+
+}
+.dropdown-menu>li{
+  color:white;
+}
+.navbar-brand{
+  color:white;
+}

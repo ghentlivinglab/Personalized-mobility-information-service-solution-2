@@ -1,0 +1,23 @@
+<div class="modal-header">
+  <h3 class="modal-title">Herinnering: verificatie e-mail</h3>
+</div>
+
+<div class="modal-body">
+	<p>
+		Er werd een mail gestuurd naar uw e-mailadres om uw registratie bij MobiliGent te bevestingen. U moet uw e-mailadres binnen de 24 uur valideren, anders wordt uw account verwijderd.
+	</p>
+
+  <div ng-show="reverifyMailWentWrong == true">
+  	<div class="alert alert-danger" role="alert" >
+  		<strong> Fout! </strong> De e-mail kon niet verzonden worden, probeer het later nog eens opnieuw!
+  	</div>
+  </div>
+
+</div>
+
+<div class="modal-footer">
+  <button ng-click="resendMail()" class="btn btn-warning">
+      Validatiemail opnieuw verzenden
+  </button>
+  <button ng-click="close()" class="btn btn-success">Sluiten</button>
+</div>

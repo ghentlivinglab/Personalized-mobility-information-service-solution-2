@@ -1,0 +1,42 @@
+<div class="eventList" ng-controller="EventController">
+    <div ng-show="events.length === 0">
+        <p class="text-center">
+            Momenteel zijn er geen events beschikbaar.
+        </p>
+    </div>
+    <div class="well well-lg col-sm-12 col-xs-12" ng-click="openMarker($index)" ng-repeat="event in events">
+        <h4 class="col-sm-9 col-xs-12">
+            {{ event.description }}
+        </h4>
+        <!-- Only show this button if the user is an operator or an admin -->
+        <div class="span-2">
+
+            <button
+                ng-show="refreshToken.role === 'operator' || refreshToken.role === 'administrator'"
+                type="button"
+                style="min-width: 50px;"
+                class="btn btn-danger pull-right  col-sm-6 col-xs-6 col-md-1 col-lg-1"
+                ng-click="confirmClick() && deleteEvent(event.id)"
+                confirm-click="Bent u zeker dat u dit event wil verwijderen?">
+                <span class="glyphicon glyphicon-trash"></span>
+            </button>
+            <!-- Only show this button if the user is an operator or an admin -->
+            <button ng-show="refreshToken.role === 'operator' || refreshToken.role === 'administrator'" type="button" class="btn btn-warning pull-right col-sm-6 col-xs-6 col-md-1 col-lg-1" style="min-width: 50px;" ng-click="openEditEvent(event)">
+                <span class="glyphicon glyphicon-pencil"></span>
+            </button>
+        </div>
+        <p class="col-sm-12 col-xs-12">
+            <div class="col-xs-12 col-sm-12">
+                <b>Adres:</b>
+
+                {{ event.formatted_address }}
+            </div>
+            <br/>
+            <div class="col-xs-12 col-sm-12">
+                <b>Actief sinds:</b>
+                {{event.publication_time | date: "dd/MM/yy H:mm"}}
+            </div>
+
+        </p>
+    </div>
+</div>

@@ -1,0 +1,69 @@
+<div class="modal-header">
+  <button type="button" class="close" ng-click="close()">
+    <span aria-hidden="true">&times;</span>
+    <span class="sr-only">Sluiten</span>
+  </button>
+  <h3 class="modal-title"> Mijn gegevens </h3>
+</div>
+
+<div class="modal-body">
+  <form novalidate class="form-horizontal" name="registration">
+    <div>
+      <div class="row row-grid">
+        <!-- FirstName -->
+        <div class="col-md-6">
+          <label> Voornaam: </label>
+          <input type="text" class="form-control" name="firstName" ng-model="user.first_name" placeholder="Voornaam">
+        </div>
+
+        <!-- LastName -->
+        <div class="col-md-6">
+          <label> Achternaam: </label>
+          <input type="text" class="form-control" name="lastName" ng-model= "user.last_name" placeholder="Achternaam">
+        </div>
+      </div>
+
+      <div class="row row-grid">
+        <div class="col-md-12" ng-class="{ 'has-error' : registration.email.$invalid && registration.$submitted}">
+          <label class="required"> E-mail: </label>
+          <input type="email" class="form-control" name="email" validate-email ng-model="user.email" placeholder="Email" required>
+          <p ng-show="registration.email.$invalid && registration.$submitted" class="help-block">
+            Het e-mailadres is ongeldig.
+          </p>
+        </div>
+      </div>
+
+      <div class="row row-grid">
+        <!-- password -->
+        <div class="col-md-6" ng-class="{ 'has-error' : (registration.pwd.$error.required && registration.$submitted) || ( !(validatePassword(user.password)) && !registration.pwd.$pristine) }">
+          <label class="required"> Wachtwoord: </label>
+          <input type="password" class="form-control" name="pwd" ng-change="validatePassword(user.password)" ng-model="user.password" placeholder="Wachtwoord" ng-minlength="8" required>
+          <!-- ng-show will only show when there is no password entered -->
+          <p ng-show="(registration.pwd.$error.required && registration.$submitted) || ( !(validatePassword(user.password)) && !registration.pwd.$pristine)" class="help-block">
+            Het wachtwoord moet minstens 8 karakters, 1 cijfer en 1 hoofdletter bevatten.
+          </p>
+        </div>
+
+        <!-- confirm password -->
+        <div class="col-md-6" ng-class="{ 'has-error' : registration.confirmPwd.$error.pwmatch && !registration.confirmPwd.$pristine || (registration.confirmPwd.$error.required && registration.$submitted)}">
+          <label class="required"> Bevestig Wachtwoord: </label>
+          <input type="password" class="form-control" name="confirmPwd" ng-model="passwordValidation" placeholder="Bevestig Wachtwoord" pw-check="pwd" required>
+          <p ng-show="registration.confirmPwd.$invalid && registration.pwd.$viewValue !== undefined && !registration.confirmPwd.$pristine" class="help-block">
+            Het wachtwoord is niet correct.
+          </p>
+          <p ng-show="(registration.confirmPwd.$error.required && registration.$submitted)" class="help-block">
+            Uw moet uw nieuw wachtwoord nog bevestigen.
+          </p>
+        </div>
+      </div>
+
+      <errormessages></errormessages>
+    </div>
+  </form>
+</div>
+
+<div class="modal-footer">
+  <button type="submit" class="btn btn-success" ng-click="registration.$setSubmitted(); registration.$valid && register()">
+    Ga verder
+  </button>
+</div>

@@ -1,0 +1,11 @@
+<ng-map zoom="11" center="51.0551688,3.7144841">
+ <directions
+  draggable="true"
+  panel="directions-panel"
+  travel-mode="{{findTravel_mode(route.transportation_type)}}"
+  transit_mode="{{route.transportation_type}}"
+  waypoints="{{findwaypoints()}}"
+  origin= "{{travel.startpoint.street}} {{travel.startpoint.housenumber}} {{travel.startpoint.postal_code}} {{travel.startpoint.city}}"
+  destination="{{travel.endpoint.street}} {{travel.endpoint.housenumber}} {{travel.endpoint.postal_code}} {{travel.endpoint.city}}">
+ </directions>
+</ng-map>

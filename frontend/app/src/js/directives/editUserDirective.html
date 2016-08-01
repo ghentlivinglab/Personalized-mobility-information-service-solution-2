@@ -1,0 +1,126 @@
+<div class="modal-header">
+  <button type="button" class="close" ng-click="close()">
+    <span aria-hidden="true">&times;</span>
+    <span class="sr-only">Sluiten</span>
+  </button>
+  <h3 class="modal-title"> Gegevens aanpassen </h3>
+</div>
+<div class="modal-body">
+  <form novalidate class="form-horizontal" name="registration1" ng-submit="submitted1 = true">
+
+    <div>
+      <!-- ng-class will make the error message and input field red when an user wants to submit and has no first name -->
+      <div class="row row-grid">
+      <!-- FirstName -->
+        <div class="col-md-5" ng-class="{ 'has-error' : registration1.firstName.$invalid && registration1.$submitted1 }">
+          <label> Voornaam: </label>
+          <input type="text" class="form-control" name="firstName" ng-model="user.first_name" placeholder="Voornaam">
+          <!-- ng-show will only show when there is no firstname entered -->
+          <p ng-show="registration1.firstName.$invalid && submitted1" class="help-block">
+            Gelieve uw voornaam in te geven.
+          </p>
+        </div>
+
+        <!-- LastName -->
+        <div class="col-md-5" ng-class="{ 'has-error' : registration1.lastName.$invalid && registration1.$submitted1 }">
+          <label> Achternaam: </label>
+          <input type="text" class="form-control" name="lastName" ng-model= "user.last_name" placeholder="Achternaam" >
+          <!-- ng-show will only show when there is no lastname entered -->
+          <p ng-show="registration1.lastName.$invalid && registration1.$submitted1" class="help-block">
+            Gelieve uw achternaam in te geven.
+          </p>
+        </div>
+
+        <!-- Submit button -->
+        <div class="col-md-2">
+          <label></label>
+          <input type="submit" value="Opslaan" class="btn btn-success form-control" ng-click=" registration1.$setSubmitted(); registration1.$valid && opslaan1(user)">
+        </div>
+      </div>
+      <div ng-show='successMessage1' class="alert alert-success text-center">{{successMessage1}}</div>
+    </div>
+
+  </form>
+  <hr>
+  <form novalidate class="form-horizontal" name="registration2">
+    <!-- ng-class will make the error message and input field red when an user wants to submit and has no valid email -->
+    <div class="row row-grid">
+      <div class="col-md-10" ng-class="{ 'has-error' : registration2.email.$invalid && registration2.$submitted }">
+        <label class="required"> E-mail: </label>
+        <input type="email" class="form-control" validate-email name="email" ng-model="newEmail" placeholder="E-mail" required>
+        <!-- ng-show will only show when there is noo valid email entered -->
+        <p ng-show="registration2.email.$invalid && registration2.$submitted" class="help-block">
+          Gelieve een geldig e-mailadres in te geven.
+        </p>
+      </div>
+
+      <!-- Submit button -->
+      <div class="col-md-2">
+        <label></label>
+        <input type="submit" value="Opslaan" class="btn btn-success form-control" ng-click=" registration2.$setSubmitted(); registration2.$valid && opslaan2(user)">
+      </div>
+    </div>
+
+    <div ng-show='successMessage2' class="alert alert-success text-center">{{successMessage2}}</div>
+
+  </form>
+  <hr>
+
+  <form novalidate class="form-horizontal" name="registration">
+
+    <!-- Password -->
+    <!-- ng-class will make the error message and input field red when an user wants to submit and has no first name -->
+    <div class="row row-grid">
+      <div class="col-md-3" ng-class="{ 'has-error' : (registration.oldPassword.$error.required && registration.$submitted) }">
+        <label> Huidig wachtwoord: </label>
+        <input type="password" class="form-control" name="oldPassword" ng-model="oldPassword" placeholder="Huidig wachtwoord" required>
+        <p ng-show="(registration.oldPassword.$error.required && registration.$submitted)" class="help-block">
+          Gelieve uw vorig wachtwoord in te geven.
+        </p>
+      </div>
+
+      <div class="col-md-3" ng-class="{ 'has-error' : (registration.pwd.$error.required && registration.$submitted) || (!validatePassword(newPassword) && !registration.pwd.$pristine) }">
+        <label> Nieuw wachtwoord: </label>
+        <input type="password" class="form-control" name="pwd" ng-change="validatePassword(newPassword)" ng-model="newPassword" ng-minlength="8" placeholder="Nieuw wachtwoord" required>
+        <!-- ng-show will only show when there is no old password entered -->
+        <p ng-show="(registration.pwd.$error.required && registration.$submitted) || (!validatePassword(newPassword) && !registration.pwd.$pristine)" class="help-block">
+          Het wachtwoord moet minstens 8 karakters, 1 cijfer en 1 hoofdletter bevatten.
+        </p>
+      </div>
+
+      <div class="col-md-4" ng-class="{ 'has-error' : (registration.confirmPwd.$error.pwmatch && !registration.confirmPwd.$pristine) || (registration.confirmPwd.$error.required && registration.$submitted) }">
+        <label> Bevestig nieuw wachtwoord: </label>
+        <input type="password" class="form-control" name="confirmPwd" ng-model="newPasswordAgain" pw-check="pwd" placeholder="Bevestig nieuw wachtwoord"required >
+        <!-- ng-show will only show when there is no old password entered -->
+        <p ng-show="registration.confirmPwd.$invalid && registration.pwd.$viewValue !== undefined && !registration.confirmPwd.$pristine" class="help-block">
+          Het wachtwoord komt niet overeen.
+        </p>
+        <p ng-show="(registration.confirmPwd.$error.required && registration.$submitted)" class="help-block">
+          Uw moet uw nieuw wachtwoord nog bevestigen.
+        </p>
+      </div>
+
+      <!-- Submit button -->
+      <div class="col-md-2">
+        <label></label>
+        <input type="submit" value="Opslaan" class="btn btn-success form-control" ng-click="registration.$setSubmitted(); registration.$valid && opslaan3(user)">
+      </div>
+    </div>
+
+    <div ng-show='successMessage3' class="alert alert-success text-center">{{successMessage3}}</div>
+
+    <!-- error message if password could not be changed -->
+    <!-- <div ng-show='passwordError' class="alert alert-danger text-center">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong> Fout! </strong>{{passwordError}}
+    </div> -->
+
+  </form>
+  <errormessages></errormessages>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-danger" ng-click="close()">
+    Sluiten
+  </button>
+</div>

@@ -1,0 +1,51 @@
+<div ng-show="currentUserTravels.length !== 0">
+    <button class="btn" id="fixedButtonTop" ng-click="openNewTravel()">
+        <span class="glyphicon glyphicon-plus"></span>
+        Voeg nieuwe route toe
+    </button>
+
+    <uib-accordion close-others=true>
+        <uib-accordion-group heading="{{t.name}}" is-open="travelId == $index" ng-repeat="t in currentUserTravels track by $index" ng-click="findAndChangeTravelId(t.id)">
+            <b>Van:</b>
+            {{ parseAddress(currentUserTravels[$index].startpoint) }}
+            <br/>
+
+            <b>Naar:</b>
+            {{ parseAddress(currentUserTravels[$index].endpoint) }}
+            <br/>
+
+            <b>Tijdstip:</b>
+            {{parseDays()}}
+            van
+            {{parseTime(currentUserTravels[$index].time_interval[0])}}
+            tot
+            {{parseTime(currentUserTravels[$index].time_interval[1])}}
+            <br/>
+
+            <b>Vervoersmiddel:</b>
+            {{translateTransportType(currentTravelRoutes[0].transportation_type)}} <br/>
+
+            <!-- class to make a newline-->
+            <div class="col-sm-12 spacer"></div>
+            <button type="button" class="btn btn-warning col-xs-12 col-sm-4" style="min-width:150px" ng-click="openEditTravel(t)">
+                <span class="glyphicon glyphicon-pencil"></span>
+                Pas route aan</button>
+                <button type="button" class="btn btn-danger pull-right col-xs-12 col-sm-4" style="min-width:150px" ng-click="confirmClick() && deleteTravel(t.id)" confirm-click="Bent u zeker dat u deze route wilt verwijderen?">
+                    <span class="glyphicon glyphicon-trash"></span>
+                    Verwijder route
+                </button>
+            </uib-accordion-group>
+        </uib-accordion-group>
+    </uib-accordion>
+</div>
+
+<div ng-show="currentUserTravels.length === 0">
+    <h1></h1>
+    <p class="well">
+        U heeft momenteel nog geen routes geregistreerd. Klik op de knop 'Voeg nieuwe route toe' om een nieuwe route toe te voegen en meldingen te ontvangen.
+    </p>
+    <button class="btn" id="fixedButtonBottom" ng-click="openNewTravel()">
+        <span class="glyphicon glyphicon-plus"></span>
+        Voeg nieuwe route toe
+    </button>
+</div>

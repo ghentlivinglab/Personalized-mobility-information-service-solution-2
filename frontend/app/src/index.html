@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="nl" ng-app="App">
+    <head>
+        <title>MobiliGent</title>
+        <meta charset="utf-8">
+
+        <meta http-equiv="X-UA-Compatible" content="IE=11"/>
+        <!-- Set the viewport for bootstrap -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Include the bootstrap stylesheet -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/css/bootstrap-dialog.min.css">
+        <!-- include the jquery script -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+        <!-- include the bootstrap script -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/js/bootstrap-dialog.min.js"></script>
+
+        <!-- include angular -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-resource.min.js"></script>
+        <script src="https://code.angularjs.org/1.4.8/angular-route.min.js"></script>
+        <script src="https://code.angularjs.org/1.4.8/angular-animate.js"></script>
+        <script src="js/ui-bootstrap-tpls-1.2.2.min.js"></script>
+
+        <!-- include ng-maps js -->
+        <script src="js/ng-map.min.js"></script>
+
+        <!-- include google maps -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtHw9dnzbkqVi8eNu8k0Kr1RhM8yXvDPY&extension=.js&libraries=places"></script>
+
+        <!-- include local storage js -->
+        <script src="js/angular-local-storage.min.js"></script>
+
+        <!-- include autocomplete -->
+        <script src="js/autocomplete.js"></script>
+
+        <!-- ClockPicker Stylesheet -->
+        <link rel="stylesheet" type="text/css" href="js/bootstrap-clockpicker.min.css">
+        <!-- ClockPicker script -->
+        <script type="text/javascript" src="js/bootstrap-clockpicker.min.js"></script>
+
+        <!-- include all own written scripts -->
+        <!-- Modules -->
+        <script src="js/app.js"></script>
+
+        <!-- Controllers -->
+        <script src="js/controllers/MainController.js"></script>
+        <script src="js/controllers/LoginController.js"></script>
+        <script src="js/controllers/UserIndexController.js"></script>
+        <script src="js/controllers/UserController.js"></script>
+        <script src="js/controllers/EditUserController.js"></script>
+        <script src="js/controllers/RegistrationController.js"></script>
+        <script src="js/controllers/EventController.js"></script>
+        <script src="js/controllers/NewEventController.js"></script>
+        <script src="js/controllers/EditEventController.js"></script>
+        <script src="js/controllers/NewTravelController.js"></script>
+        <script src="js/controllers/EditTravelController.js"></script>
+        <script src="js/controllers/NewLocationController.js"></script>
+        <script src="js/controllers/EditLocationController.js"></script>
+        <script src="js/controllers/ModalInstanceController.js"></script>
+        <script src="js/controllers/ValidationController.js"></script>
+        <script src="js/controllers/ValidationReminderController.js"></script>
+        <script src="js/controllers/AdminController.js"></script>
+
+        <!-- Services -->
+        <script src="js/services/user.js"></script>
+        <script src="js/services/event.js"></script>
+        <script src="js/services/maps.js"></script>
+        <script src="js/services/eventType.js"></script>
+        <script src="js/services/travel.js"></script>
+        <script src="js/services/shared.js"></script>
+        <script src="js/services/dialogModal.js"></script>
+        <script src="js/services/address.js"></script>
+        <script src="js/services/error.js"></script>
+        <script src="js/services/registration.js"></script>
+        <script src="js/services/route.js"></script>
+        <script src="js/services/location.js"></script>
+        <script src="js/services/regularRefreshToken.js"></script>
+        <script src="js/services/accessToken.js"></script>
+      	<script src="js/services/verify.js"></script>
+        <script src="js/services/reverifyMail.js"></script>
+        <script src="js/services/locationControl.js"></script>
+        <script src="js/services/travelControl.js"></script>
+        <script src="js/services/changeEmail.js"></script>
+        <script src="js/services/changePassword.js"></script>
+        <script src="js/services/eventControl.js"></script>
+        <script src="js/services/admin.js"></script>
+        <script src="js/services/adminDeleteUser.js"></script>
+        <script src="js/services/operator.js"></script>
+        <script src="js/services/dataDump.js"></script>
+        <script src="js/services/locationEvent.js"></script>
+        <script src="js/services/routeEvent.js"></script>
+        <script src="js/services/userEvent.js"></script>
+        <script src="js/services/password.js"></script>
+
+        <!-- Directives -->
+        <script src="js/directives/editMapDirective.js"></script>
+        <script src="js/directives/confirmClick.js"></script>
+        <script src="js/directives/errorMessages.js"></script>
+        <script src="js/directives/formValidation/validateEmailDirective.js"></script>
+        <script src="js/directives/formValidation/passWordComparison.js"></script>
+
+        <!-- include own stylesheets -->
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/registration.css">
+        <link rel="stylesheet" href="css/user.css">
+        <link rel="stylesheet" href="css/autocomplete.css">
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/userIndex.css">
+
+    </head>
+    <body>
+
+        <div ng-view></div>
+
+    </body>
+</html>

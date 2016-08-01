@@ -1,0 +1,111 @@
+
+<!-- error message if the server couldn't be contacted -->
+<div ng-show="connectionRefused == true">
+	<div class="alert alert-danger" role="alert" >
+		<strong> Fout! </strong> De server kan niet gecontacteerd worden. Gelieve later nog eens te proberen.
+	</div>
+</div>
+
+<!-- error message if user not logged in -->
+<div ng-show="userNotLoggedIn == true">
+	<div class="alert alert-danger" role="alert" >
+		<strong> Fout! </strong> U moet ingelogd zijn om deze pagina te kunnen bekijken.
+	</div>
+</div>
+
+<!-- error message if user is not an admin -->
+<div ng-show="userNotAdmin == true">
+	<div class="alert alert-danger" role="alert" >
+		<strong> Fout! </strong> U hebt niet de nodige rechten om deze pagina te kunnen bekijken.
+	</div>
+</div>
+
+<!-- error message if user does not exist -->
+<div ng-show="userDoesNotExist == true">
+	<div class="alert alert-danger" role="alert" >
+		<strong> Fout! </strong> Deze gebruiker bestaat niet.
+	</div>
+</div>
+
+<!-- error message if user already exists -->
+<div ng-show="userAlreadyExists == true">
+	<div class="alert alert-danger" role="alert" >
+		<strong> Fout! </strong>
+    Het email adres is reeds in gebruik. Gelieve in te loggen of een ander email adres te gebruiken.
+	</div>
+</div>
+
+<!-- error message if there is an internal server error when posting the user -->
+<div ng-show="userServerError == true">
+	<div class="alert alert-danger" role="alert" >
+		<strong> Fout! </strong>
+    Er is iets foutgelopen in de server bij het opslaan van uw persoonlijke gegevens. Controleer uw gegevens en probeer opnieuw.
+	</div>
+</div>
+
+<!-- error message if travel already exists -->
+<div ng-show="travelAlreadyExists == true">
+	<div class="alert alert-danger" role="alert" >
+		<strong> Fout! </strong>
+    De route die u heeft ingegeven bestaat al. Gelieve de gegevens aan te passen of te annuleren.
+	</div>
+</div>
+
+<!-- error message if the server has internal error when posting a travel -->
+<div ng-show="travelServerError == true">
+	<div class="alert alert-danger" role="alert" >
+		<strong> Fout! </strong>
+    Er is iets foutgelopen in de server bij het opslaan van uw route. Controleer de gegevens en probeer opnieuw.
+	</div>
+</div>
+
+<!-- error message if there is an internal server error when posting the user -->
+<div ng-show="POIUserNotExist == true">
+	<div class="alert alert-danger" role="alert" >
+		<strong> Fout! </strong>
+    De gebruiker bestaat niet
+	</div>
+</div>
+
+<!-- error message if there is an internal server error when posting the user -->
+<div ng-show="POIAlreadyExists == true">
+	<div class="alert alert-danger" role="alert" >
+		<strong> Fout! </strong>
+    De opgegeven locatie bestaat al. Gelieve een nieuwe locatie in te geven.
+	</div>
+</div>
+
+<!-- error message if there is an internal server error when posting the user -->
+<div ng-show="POIServerError == true">
+	<div class="alert alert-danger" role="alert" >
+		<strong> Fout! </strong>
+    Er is iets foutgelopen in de server bij het opslaan van uw locatie. Controleer de gegevens en probeer opnieuw.
+	</div>
+</div>
+
+<div ng-show="usernotLoggdIn == true">
+	<div class="alert alert-danger" role="alert" >
+		<strong> Fout! </strong>
+    U bent niet ingelogd met een geldig account. U kan deze bewerking niet uitvoeren
+	</div>
+</div>
+
+<div ng-show="userNotAuthorised == true">
+	<div class="alert alert-danger" role="alert" >
+		<strong> Fout! </strong>
+     U bent niet gemachtigd om deze berwerking uit te voeren.
+	</div>
+</div>
+
+<!-- error message if the user has not given a location, nor a travel -->
+<div ng-show="failedRegistration == true">
+	<div class="alert alert-danger" role="alert" >
+		<strong> Fout! </strong> U moet minstens een locatie of een route opgeven.
+	</div>
+</div>
+
+<div ng-show="wrongOldPwd == true">
+	<div class="alert alert-danger" role="alert" >
+		<strong> Fout! </strong> Uw oud wachtwoord was fout.
+	</div>
+</div>

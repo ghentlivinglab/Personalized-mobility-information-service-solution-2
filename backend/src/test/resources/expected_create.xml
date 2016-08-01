@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+    <account accountid="1" created_at="2016-05-08 11:22:20.015091" email="phenderson0@biglobe.ne.jp" first_name="Peter" last_name="Henderson"  mute_notifications="false" refresh_token="REFRESH" email_validated="false" is_operator="false" is_admin="false" push_token="pushToken"/>
+    <account accountid="2" created_at="2016-05-08 11:22:20.015091" email="mpeterson1@cyberchimps.com" first_name="Melissa" last_name="Peterson" mute_notifications="true" refresh_token="REFRESH" email_validated="true" is_operator="false" is_admin="false" push_token="pushToken"/>
+    <account accountid="3" created_at="2016-05-08 11:22:20.015091" email="test@test.com" first_name="test_voornaam" last_name="test_achternaam"  mute_notifications="false" refresh_token="REFRESH" email_validated="true" is_operator="false" is_admin="false" push_token="pushToken"/>
+    <city cityid="1" city="Gent" postal_code="9000" country="BE"/>
+    <city cityid="2" city="Dendermonde" postal_code="9200" country="BE"/>
+    <city cityid="3" city="Antwerpen" postal_code="2000" country="BE"/>
+    <city cityid="4" city="poistad" postal_code="1234" country="BE"/>
+    <city cityid="5" city="beginstad" postal_code="2345" country="BE"/>
+    <city cityid="6" city="eindstad" postal_code="3456" country="BE"/>
+    <street streetid="1" cityid="1" name="Jozef Plateaustraat"/>
+    <street streetid="2" cityid="1" name="Kattenberg"/>
+    <street streetid="3" cityid="1" name="Galglaan"/>
+    <street streetid="4" cityid="2" name="Serwouterstraat"/>
+    <street streetid="5" cityid="3" name="Meir"/>
+    <street streetid="6" cityid="4" name="poistraat"/>
+    <street streetid="7" cityid="5" name="beginstraat"/>
+    <street streetid="8" cityid="6" name="eindstraat"/>
+    <address addressid="1" streetid="1" housenumber="1" latitude="51.04615400" longitude="3.72236000"/>
+    <address addressid="2" streetid="2" housenumber="2" latitude="51.04254100" longitude="3.72372800"/>
+    <address addressid="3" streetid="3" housenumber="3" latitude="51.02810200" longitude="3.71867100"/>
+    <address addressid="4" streetid="4" housenumber="4" latitude="51.02098600" longitude="4.11979600"/>
+    <address addressid="5" streetid="5" housenumber="5" latitude="51.21834700" longitude="4.40537600"/>
+    <address addressid="6" streetid="6" housenumber="1" latitude="90.00000000" longitude="90.0000000"/>
+    <address addressid="7" streetid="7" housenumber="1" latitude="90.00000000" longitude="90.0000000"/>
+    <address addressid="8" streetid="8" housenumber="1" latitude="90.00000000" longitude="90.0000000"/>
+    <eventtype eventtypeid="1" type="JAM"/>
+    <eventtype eventtypeid="2" type="SNOW"/>
+    <eventtype eventtypeid="3" type="STRIKE"/>
+    <eventtype eventtypeid="4" type="ROAD_BLOCKED"/>
+    <eventtype eventtypeid="5" type="TEST"/>
+    <location locationid="1" accountid="1" addressid="1" name="home" radius="5000" active="true" notify_email="true" notify_cell="false"/>
+    <location locationid="2" accountid="1" addressid="5" name="work" radius="1000" active="true" notify_email="false" notify_cell="false"/>
+    <location locationid="3" accountid="2" addressid="3" name="de sterre" radius="2000" active="true" notify_email="true" notify_cell="true"/>
+    <location locationid="4" accountid="3" addressid="6" name="poi" radius="2000" active="true" notify_email="false" notify_cell="false"/>
+    <location_event/>
+    <location_eventtype/>
+    <travel travelid="1" accountid="1" startpoint="1" endpoint="5" name="home-&gt;work" begin_time="08:00:00" end_time="09:00:00" is_arrival_time="false" mon="true" tue="true" wed="true" thu="true" fri="true" sat="false" sun="false"/>
+    <travel travelid="2" accountid="1" startpoint="5" endpoint="1" name="work-&gt;home" begin_time="16:00:00" end_time="17:00:00" is_arrival_time="false" mon="true" tue="true" wed="true" thu="true" fri="true" sat="false" sun="false"/>
+    <travel travelid="3" accountid="2" startpoint="4" endpoint="2" name="hobby" begin_time="12:00:00" end_time="13:30:00" is_arrival_time="true" mon="false" tue="false" wed="false" thu="false" fri="false" sat="false" sun="true"/>
+    <travel travelid="4" accountid="3" startpoint="7" endpoint="8" name="testtravel" begin_time="08:00:00" end_time="08:30:00" is_arrival_time="true" mon="true" tue="true" wed="true" thu="true" fri="true" sat="false" sun="false"/>
+    <route routeid="1" travelid="1" transportation_type="car" active="true" notify_email="false" notify_cell="false"/>
+    <route routeid="2" travelid="2" transportation_type="car" active="true" notify_email="true" notify_cell="false"/>
+    <route routeid="3" travelid="2" transportation_type="car" active="true" notify_email="false" notify_cell="false"/>
+    <route routeid="4" travelid="3" transportation_type="car" active="true" notify_email="false" notify_cell="false"/>
+    <route routeid="5" travelid="4" transportation_type="car" active="true" notify_email="false" notify_cell="false"/>
+    <route_event/>
+    <route_eventtype route_eventtypeid="1" routeid="1" eventtypeid="1"/>
+    <route_eventtype route_eventtypeid="2" routeid="1" eventtypeid="2"/>
+    <route_eventtype route_eventtypeid="3" routeid="1" eventtypeid="4"/>
+    <route_eventtype route_eventtypeid="4" routeid="2" eventtypeid="1"/>
+    <route_eventtype route_eventtypeid="5" routeid="2" eventtypeid="2"/>
+    <route_eventtype route_eventtypeid="6" routeid="2" eventtypeid="4"/>
+    <route_eventtype route_eventtypeid="7" routeid="3" eventtypeid="4"/>
+    <route_eventtype route_eventtypeid="8" routeid="5" eventtypeid="5"/>
+</dataset>

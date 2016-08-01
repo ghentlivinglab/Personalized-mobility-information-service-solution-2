@@ -1,0 +1,82 @@
+/*
+A custom Bootstrap 3.1 theme from http://bootply.com\
+
+This CSS code should follow the 'bootstrap.css'
+in your HTML file.
+
+license: MIT
+author: bootply.com
+*/
+
+html, body {
+    height: 100%;
+}
+
+.navbar-nav {
+    background-color: #009fe3;
+    color:white;
+}
+.navbar {
+    background-color: #009fe3;
+    border-color: #009fe3;
+}
+.navbar-inverse .navbar-nav .open .dropdown-menu>li>a{
+  color:white;
+}
+.nav.navbar-nav.navbar-right li a {
+    color: white;
+}
+.nav.navbar-nav.navbar-right li a:hover {
+    background-color: #25BBFC;
+}
+.container .navbar-header a {
+    color: white;
+}
+.dropdown-menu {
+    background-color: #009fe3;
+}
+
+
+.navbar .nav > li.dropdown.open > a{
+   background-color: #25BBFC;
+}
+::-webkit-scrollbar {
+    width: 8px;
+    z-index:99;
+    position:relative;
+}
+::-webkit-scrollbar-button {
+    width: 8px;
+    height: 5px;
+    z-index: 99;
+    position: relative;
+}
+::-webkit-scrollbar-track {
+    background: #eee;
+    border: thin solid lightgray;
+    box-shadow: 0px 0px 3px #dfdfdf inset;
+    border-radius: 10px;
+    z-index: 99;
+    position: relative;
+}
+::-webkit-scrollbar-thumb {
+    background: #999;
+    border: thin solid gray;
+    border-radius: 10px;
+    z-index: 99;
+    position: relative;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #7d7d7d;
+}
+.spacer {
+    margin-top: 15px; /* define margin as you see fit */
+}
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
+}
+
+.btn{
+  border: 1px solid #ddd;
+}

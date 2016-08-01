@@ -1,47 +1,89 @@
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
+# Gradle
+# ------
+*.gradle
+/build
+/buildSrc/build
+/subprojects/*/build
+/subprojects/docs/src/samples/*/*/build
 
-# Folder config file
-Desktop.ini
+# IDEA
+# ----
+.idea
+.shelf
+*.iml
+*.ipr
+*.iws
+/buildSrc/*.iml
+/buildSrc/*.ipr
+/buildSrc/*.iws
+/buildSrc/out
+/backend/out/*
+/subprojects/*/*.iml
+/subprojects/*/out
 
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
+# Eclipse
+# -------
+*.classpath
+*.project
+*.settings
+/bin
+/subprojects/*/bin
+atlassian-ide-plugin.xml
 
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
+# NetBeans
+# --------
+.nb-gradle
+.nb-gradle-properties
 
-# Windows shortcuts
-*.lnk
+# IntelliJ
+# --------
+.idea/
+/out/
 
-# =========================
-# Operating System Files
-# =========================
+# Vim
+# ---
+*.sw[op]
 
-# OSX
-# =========================
+# Emacs
+# -----
+*~
 
+# Textmate
+# --------
+.textmate
+
+# Sublime Text
+# ------------
+*.sublime-*
+
+# OS X
+# ----
 .DS_Store
-.AppleDouble
-.LSOverride
 
-# Thumbnails
-._*
+# Java
+# ----
+*.class
 
-# Files that might appear in the root of a volume
-.DocumentRevisions-V100
-.fseventsd
-.Spotlight-V100
-.TemporaryItems
-.Trashes
-.VolumeIcon.icns
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
 
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
+# Package Files #
+*.war
+*.ear
+
+# Visual Paradigm
+*.vux
+
+# Angular
+# bower.json
+bower_components/
+node_modules/
+# package.json
+
+# backend build folder
+backend/target/*
+/backend/nbproject/
+
+# frontend coverage folder
+frontend/app/coverage
+/frontend/app/nbproject/private/

@@ -1,0 +1,46 @@
+<div class="modal-content">
+  <!-- Modal Header -->
+  <div class="modal-header">
+    <button type="button" class="close" ng-click="close()">
+      <span aria-hidden="true">&times;</span>
+      <span class="sr-only">Sluiten</span>
+    </button>
+    <h4 class="modal-title">
+      Meld je aan
+    </h4>
+  </div>
+
+  <!-- Modal Body -->
+  <div class="modal-body">
+
+    <div ng-show='message' class="alert alert-success text-center">{{message}}</div>
+    <form class="form-horizontal" role="form" name="loginform">
+      <div class="form-group">
+        <label class="col-sm-2" for="inputEmail3">E-mail</label>
+        <div class="col-sm-10">
+          <input type="email" class="form-control" id="inputEmail3" ng-model="useremail" placeholder="E-mail" required/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="inputPassword3" >Wachtwoord</label>
+        <div class="col-sm-10">
+          <input type="password" class="form-control" id="inputPassword3" ng-model="userpass" placeholder="Wachtwoord"/>
+        </div>
+      </div>
+
+<div ng-show="error" class="alert alert-danger text-center">{{error}}</div>
+<div ng-show="pwdSent" class="alert alert-success text-center">
+  Er is een nieuw wachtwoord verstuurd naar het opgegeven email adres
+</div>
+<div class="form-group">
+  <div class="col-sm-offset-2 col-sm-6">
+    <button class="btn btn-success" type="submit" ng-click="loginform.$valid && login()">Aanmelden</button>
+  </div>
+  <div class="col-sm-4 pull-right">
+    <button class="btn btn-warning" ng-click="loginform.$valid && sendPwd()">Wachtwoord vergeten</button>
+  </div>
+</div>
+</form>
+
+</div>
+</div>

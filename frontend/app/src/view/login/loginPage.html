@@ -1,0 +1,28 @@
+<!-- Navigation header -->
+<div ng-include src=" 'js/directives/navBar.html' "></div>
+
+<div class="container-fluid">
+
+	<div class="container-fluid" id="main">
+	  <div class="row">
+	  	<div class="col-xs-4 text-center" id="left">
+				<h2>Welkom op de website van MobiliGent!</h2>
+				<p>Wij houden je up-to-date over het reilen en zeilen op en rond de Gentse wegen! <br/>
+				Maak snel een account aan of bekijk het profiel van een van onze gebruikers.</p>
+
+				<div class="text-center">
+						<button class="btn" ng-click="openLoginModal()">Aanmelden</button>
+						<button class="btn" ng-click="openRegistration()">Registreren</button>
+				</div>
+	    </div>
+	  </div>
+	</div>
+
+
+	<div id="map-canvas">
+  	<div id="login-map"></div>
+	</div>
+
+
+
+</div>

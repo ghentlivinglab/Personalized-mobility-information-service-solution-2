@@ -1,0 +1,52 @@
+<div ng-include src=" 'js/directives/navBar.html' "></div>
+
+<div id="map-canvas"></div>
+<div class="container-fluid" id="main">
+    <div class="row" id="nav2">
+        <div class="col-xs-4" id="left">
+            <div class="col-xs-12 nopadding">
+                <ul class="nav nav-pills nav-justified">
+                    <li class="active">
+                        <a href="" ng-click="onClickTemplate(0)">Routes toevoegen</a>
+                    </li>
+                    <li>
+                        <a href="" ng-click="onClickTemplate(1)">Locaties toevoegen</a>
+                    </li>
+                    <li>
+                        <a href="" ng-click="onClickTemplate(2)">Help</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="lists">
+        <div class="col-xs-4" id="left">
+            <div class="col-xs-12 nopadding" ng-include src="template.url"></div>
+
+            <button type="submit" class="btn btn-success" ng-click="register()">
+                Voltooi registratie
+            </button>
+            <button type="submit" class="btn btn-danger pull-right" ng-click="cancel()">
+                Annuleer registratie
+            </button>
+            <div class="col-xs-8">
+                <!--map-canvas will be postioned here-->
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+</div>
+</div>
+
+<!-- script to change the active class when clicking on a different pill -->
+<script>
+$(".nav li").on("click", function() {
+    $(".nav li").removeClass("active");
+    $(this).addClass("active");
+});
+</script>

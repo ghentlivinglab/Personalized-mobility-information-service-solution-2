@@ -1,0 +1,28 @@
+<h3>Gebruikerslijst</h3>
+<div ng-show='message' class="alert alert-success text-center">{{message}}</div>
+<uib-accordion>
+  <uib-accordion-group heading="{{user.email}}" ng-repeat="user in users" ng-click="findAndChangeUserId(user.id)">
+    <p><b>Voornaam:</b> {{user.first_name}}</p>
+    <p><b>Familienaam:</b> {{user.last_name}}</p>
+    <p ng-if="user.validated.email"><b>E-mail gevalideerd?:</b> Ja</p>
+    <p ng-if="!user.validated.email"><b>E-mail gevalideerd?:</b> Nee</p>
+    <!-- only show these buttons when the user is not the current user (admin) -->
+    <div class="text-center" ng-show="currentUser.email !== user.email">
+      <!-- Only show this button if the user isn't already an admin -->
+      <button ng-show="!isAdmin(user.id)" type="button" class="btn btn-success col-md-4" ng-click="makeAdmin(user.email) && confirmClick()" confirm-click="Bent u zeker dat u deze gebruiker admin wil maken?">
+        <span class="glyphicon glyphicon-plus" ></span>
+        Voeg toe als admin
+      </button>
+      <!-- Only show this button if the user isn't already an operator -->
+      <button ng-show="!isOperator(user.id)" type="button" class="btn btn-success col-md-4" ng-click="makeOperator(user.email) && confirmClick()" confirm-click="Bent u zeker dat u deze gebruiker operator wil maken?">
+        <span class="glyphicon glyphicon-plus" ></span>
+        Voeg toe als operator
+      </button>
+
+      <button type="button" class="btn btn-danger col-md-4" ng-click="confirmClick() && deleteUser(user.id)" confirm-click="Bent u zeker dat u deze gebruiker wilt verwijderen?">
+        <span class="glyphicon glyphicon-trash" ></span>
+        Verwijder gebruiker
+      </button>
+    </div>
+  </uib-accordion-group>
+</uib-accordion>

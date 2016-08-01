@@ -1,0 +1,79 @@
+<div class="modal-header">
+  <button type="button" class="close" ng-click="close()">
+    <span aria-hidden="true">&times;</span>
+    <span class="sr-only">Sluiten</span>
+  </button>
+  <h3 class="modal-title">Event aanpassen</h3>
+</div>
+
+<div class="modal-body">
+  <form novalidate class="form-horizontal" name="registration" ng-submit="submitted = true">
+
+    <div>
+      <!-- Give the event a name. -->
+      <div class="row row-grid">
+        <div class="col-md-6" ng-class="{ 'has-error' : registration.name.$invalid && submitted }">
+          <label class="required"> Korte beschrijving: </label>
+          <input name="name" type="text" class="form-control" ng-model="event.description" required>
+          <p ng-show="submitted && (registration.name.$error.required)" class="help-block">
+            Gelieve een beschrijving in te geven voor het event.
+          </p>
+        </div>
+
+        <!-- choose event type -->
+        <div class="col-md-6" ng-class="{ 'has-error' : registration.eventType.$invalid && submitted }">
+          <label class="control-label col-sm-2"> EventType: </label>
+          <select name="eventType" ng-model="event.type.type" class="form-control" ng-required="value != ' '">
+            <option value="">
+              EventType
+            </option>
+            <option ng-repeat="(name,value) in eventTypes" value="{{name}}">
+              {{value}}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <!-- add location -->
+      <div class="row row-grid">
+        <div class="col-md-12" ng-class="{ 'has-error' : ( registration.location.$error.required ) && submitted }">
+          <label class="required" ng-if="event.type.type !== 'JAM' && event.type.type !== 'ROAD_CLOSED'" class="control-label col-sm-2">
+            Adres:
+          </label>
+          <label class="required" ng-if="event.type.type === 'JAM' || event.type.type === 'ROAD_CLOSED'" class="control-label col-sm-2">
+            Start:
+          </label>
+
+          <input name="location" class="form-control" type="text" g-places-autocomplete force-selection="true" ng-model="locationInfo" ng-change="markerdrag = false" autocomplete="off" required placeholder="{{currentAddress}}">
+          <p ng-show="submitted && (registration.location.$error.required)" class="help-block">
+            Gelieve een adres in te geven.
+          </p>
+        </div>
+      </div>
+
+      <!-- add location -->
+      <div class="row row-grid">
+        <div class="col-md-12" ng-show="event.type.type === 'JAM' || event.type.type === 'ROAD_CLOSED'" ng-class="{ 'has-error' : Location2Error }">
+          <label class="required" class="control-label col-sm-2">
+            Eind:
+          </label>
+          <input name="location2" class="form-control" type="text" g-places-autocomplete force-selection="true" ng-model="locationInfo2" ng-change="jamdrag = false; checkJamRoadClosed()" autocomplete="off" placeholder="{{currentAddress}}">
+          <p ng-show="Location2Error" class="help-block">
+            Gelieve een eindadres in te geven.
+          </p>
+        </div>
+      </div>
+
+
+      <div id="map-canvas4"></div>
+      <!-- include all the possible error messages for the registration -->
+      <errormessages></errormessages>
+    </div>
+  </form>
+</div>
+
+<div class="modal-footer">
+  <button type="submit" class="btn btn-success" ng-click="checkJamRoadClosed() && registration.$valid && register()">
+    Pas toe
+  </button>
+</div>

@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+    <account accountid="1" created_at="2016-05-08 11:22:20.015091" email="test@test.com" first_name="testvoornaam" last_name="testachternaam" salt="RkeaQdyeNbc2ZzPwAhAo8Xown/ZXAryyCpWBXn6NYPM=" password="6847e74879103c8df1f1bd01ffd1bc375887a854b5b9d7057b7eb73d3381860a" mute_notifications="false" refresh_token="REFRESH" email_validated="false" is_operator="false" is_admin="false" push_token="pushToken" />
+    <account accountid="2" created_at="2016-05-08 11:22:20.015091" email="mpeterson1@cyberchimps.com" first_name="Melissa" last_name="Peterson" salt="DYXhgPc71kwyiS1/bt1UVdUOzJjRsXEoP15YFzhA8i0=" password="bd26022cc0d2bf5d09b1b93ef5dbc135819f9f301ef89cfe55222483de49f5e4" mute_notifications="true" refresh_token="REFRESH" email_validated="true" is_operator="false" is_admin="false" push_token="pushToken" />
+    <city cityid="1" city="test" postal_code="1234" country="BE"/>
+    <city cityid="2" city="Dendermonde" postal_code="9200" country="BE"/>
+    <city cityid="3" city="Antwerpen" postal_code="2000" country="BE"/>
+    <street streetid="1" cityid="1" name="teststraat"/>
+    <street streetid="2" cityid="1" name="Kattenberg"/>
+    <street streetid="3" cityid="1" name="Galglaan"/>
+    <street streetid="4" cityid="2" name="Serwouterstraat"/>
+    <street streetid="5" cityid="3" name="Meir"/>
+    <address addressid="1" streetid="1" housenumber="1T" latitude="25.25000000" longitude="26.2600000"/>
+    <address addressid="2" streetid="2" housenumber="2" latitude="51.04254100" longitude="3.72372800"/>
+    <address addressid="3" streetid="3" housenumber="3" latitude="51.02810200" longitude="3.71867100"/>
+    <address addressid="4" streetid="4" housenumber="4" latitude="51.02098600" longitude="4.11979600"/>
+    <address addressid="5" streetid="5" housenumber="5" latitude="51.21834700" longitude="4.40537600"/>
+    <eventtype eventtypeid="1" type="JAM"/>
+    <eventtype eventtypeid="2" type="SNOW"/>
+    <eventtype eventtypeid="3" type="STRIKE"/>
+    <eventtype eventtypeid="4" type="ROAD_BLOCKED"/>
+    <location locationid="1" accountid="1" addressid="1" name="home" radius="5000" active="true" notify_email="true" notify_cell="false"/>
+    <location locationid="2" accountid="1" addressid="5" name="work" radius="1000" active="true" notify_email="false" notify_cell="false"/>
+    <location locationid="3" accountid="2" addressid="3" name="de sterre" radius="2000" active="true" notify_email="true" notify_cell="true"/>
+    <location_event/>
+    <location_eventtype/>
+    <travel travelid="1" accountid="1" startpoint="1" endpoint="5" name="home-&gt;work" begin_time="08:00:00" end_time="09:00:00" is_arrival_time="false" mon="true" tue="true" wed="true" thu="true" fri="true" sat="false" sun="false"/>
+    <travel travelid="2" accountid="1" startpoint="5" endpoint="1" name="work-&gt;home" begin_time="16:00:00" end_time="17:00:00" is_arrival_time="false" mon="true" tue="true" wed="true" thu="true" fri="true" sat="false" sun="false"/>
+    <travel travelid="3" accountid="2" startpoint="4" endpoint="2" name="hobby" begin_time="12:00:00" end_time="13:30:00" is_arrival_time="true" mon="false" tue="false" wed="false" thu="false" fri="false" sat="false" sun="true"/>
+    <route routeid="1" travelid="1" transportation_type="car" active="true" notify_email="false" notify_cell="false"/>
+    <route routeid="2" travelid="2" transportation_type="car" active="true" notify_email="true" notify_cell="false"/>
+    <route routeid="3" travelid="2" transportation_type="car" active="true" notify_email="false" notify_cell="false"/>
+    <route routeid="4" travelid="3" transportation_type="car" active="true" notify_email="false" notify_cell="false"/>
+    <route_event/>
+    <route_eventtype route_eventtypeid="1" routeid="1" eventtypeid="1"/>
+    <route_eventtype route_eventtypeid="2" routeid="1" eventtypeid="2"/>
+    <route_eventtype route_eventtypeid="3" routeid="1" eventtypeid="4"/>
+    <route_eventtype route_eventtypeid="4" routeid="2" eventtypeid="1"/>
+    <route_eventtype route_eventtypeid="5" routeid="2" eventtypeid="2"/>
+    <route_eventtype route_eventtypeid="6" routeid="2" eventtypeid="4"/>
+    <route_eventtype route_eventtypeid="7" routeid="3" eventtypeid="4"/>
+</dataset>

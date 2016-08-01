@@ -1,0 +1,126 @@
+<div class="modal-header">
+  <button type="button" class="close" ng-click="close()">
+    <span aria-hidden="true">&times;</span>
+    <span class="sr-only">Sluiten</span>
+  </button>
+  <h3 class="modal-title">Route aanpassen</h3>
+</div>
+
+<div class="modal-body">
+  <form novalidate class="form-horizontal" name="registration" ng-submit="submitted = true">
+    <div>
+      <div class="row row-grid">
+        <!-- Name of the route -->
+        <div class="col-md-6" ng-class="{ 'has-error' : registration.routeName.$invalid && registration.$submitted }">
+          <label class="required"> Naam van route: </label>
+          <input name="routeName" type="text" class="form-control" ng-model="travel.name" required>
+          <p ng-show="registration.$submitted && (registration.routeName.$error.required)" class="help-block">
+            Gelieve een naam in te geven voor de route.
+          </p>
+        </div>
+        <!-- choose transportation type -->
+        <div class="col-md-6" ng-class="{ 'has-error' : registration.routeTransportType.$invalid && registration.$submitted }">
+          <label class="required"> Transporttype: </label>
+          <select name="routeTransportType" ng-model="route.transportation_type" class="form-control" ng-required="value != ' '">
+            <option value=""> Transporttype </option>
+            <option ng-repeat="type in transportTypes" value="{{type.code}}"> {{type.name}} </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row row-grid">
+        <!-- set the arrival time of the travel -->
+        <div class="col-md-6" ng-class="{ 'has-error' : (registration.startTime.$invalid || registration.endTime.$invalid) && registration.$submitted }">
+          <label class="required"> Meldingen ontvangen tussen: </label>
+          <div>
+            <div class="clockpicker col-sm-3" data-align="top" data-autoclose="true">
+              <input type="text" class="form-control" name="startTime" ng-model="travel.time_interval[0]" readonly="readonly">
+            </div>
+
+            <label class="col-md-1">-</label>
+
+            <div class="clockpicker col-sm-3" data-align="top" data-autoclose="true">
+              <input type="text" class="form-control" name="endTime" ng-model="travel.time_interval[1]" readonly="readonly">
+            </div>
+          </div>
+
+          <script type="text/javascript"> $('.clockpicker').clockpicker(); </script>
+        </div>
+        <!-- Get notifications via email -->
+        <div class="col-md-6">
+          <br/>
+          <label> Meldingen ontvangen via e-mail:
+            <input type="checkbox" ng-model="route.active">
+          </label>
+        </div>
+      </div>
+
+      <!-- set the recurring of the travel -->
+      <div class="row row-grid">
+        <label class="col-sm-2"> Ik doe dit elke: </label>
+        <span id="recurring">
+          <label> Maandag:
+            <input type="checkbox" ng-model=travel.recurring[0] ng-true-value="true">
+          </label>
+        </span>
+        <span id="recurring">
+          <label> Dinsdag:
+            <input type="checkbox" ng-model=travel.recurring[1] ng-true-value="true">
+          </label>
+        </span>
+        <span id="recurring">
+          <label> Woensdag:
+            <input type="checkbox" ng-model=travel.recurring[2] ng-true-value="true">
+          </label>
+        </span>
+        <span id="recurring">
+          <label> Donderdag:
+            <input type="checkbox" ng-model=travel.recurring[3] ng-true-value="true">
+          </label>
+        </span>
+        <span id="recurring">
+          <label> Vrijdag:
+            <input type="checkbox" ng-model=travel.recurring[4] ng-true-value="true">
+          </label>
+        </span>
+        <span id="recurring">
+          <label> Zaterdag:
+            <input type="checkbox" ng-model=travel.recurring[5] ng-true-value="true">
+          </label>
+        </span>
+        <span id="recurring">
+          <label> Zondag:
+            <input type="checkbox" ng-model=travel.recurring[6] ng-true-value="true">
+          </label>
+        </span>
+      </div>
+
+      <!-- Route from address -->
+      <div class="row row-grid">
+        <div class="col-md-6"
+        ng-class="{ 'has-error' : ( registration.startAddress.$invalid || !isAddressValid(travelInfo.startAddress) ) && registration.$submitted }">
+        <label class="required">  Van: </label>
+        <input name="startAddress" class="form-control" type="text" g-places-autocomplete force-selection="true" ng-model="travelInfo.startAddress" ng-change="setStartAddress(travelInfo)" placeholder="{{currentStartAddress}}" autocomplete="off">
+      </div>
+
+      <!-- Route to address -->
+      <div class="col-md-6"
+      ng-class="{ 'has-error' : ( registration.endAddress.$invalid || !isAddressValid(travelInfo.endAddress) ) && registration.$submitted }" >
+      <label class="required"> Naar: </label>
+      <input name="endAddress" class="form-control" type="text" g-places-autocomplete force-selection="true" ng-model="travelInfo.endAddress" ng-change="setEndAddress(travelInfo)" autocomplete="off" placeholder="{{currentEndAddress}}">
+    </div>
+  </div>
+</div>
+<div id="map-canvas2"></div>
+
+<!-- include all the possible error messages for the registration -->
+<errormessages></errormessages>
+
+</div>
+
+
+<div class="modal-footer">
+  <button type="submit" class="btn btn-success" ng-click="registration.$setSubmitted(); registration.$valid && register(travel, route)">
+    Pas toe
+  </button>
+</div>

@@ -1,0 +1,11 @@
+<!-- Confirmation popup window for dialogModal service -->
+<div class="dialog-modal">
+  <div class="modal-header" ng-show="modalTitle">
+    <h3 class="modal-title">{{modalTitle}}</h3>
+  </div>
+  <div class="modal-body text-center">{{modalBody}}</div>
+  <div class="modal-footer">
+    <button class="btn btn-warning" ng-click="verify()" ng-show="verifyButton">{{verifyButton}}</button>
+    <button class="btn btn-primary" ng-click="ok()" ng-show="okButton">{{okButton}}</button>
+  </div>
+</div>
